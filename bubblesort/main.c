@@ -8,9 +8,9 @@ int DEBUG;
 int main(){
 
     char* _debug = getenv("DEBUG");
-    if(_debug){
-	DEBUG = strcmp(_debug,"1") == 0 ? 1 : 0;
-    }
+    if(_debug)
+	DEBUG = !strcmp(_debug,"1");
+	//how does this even work???
 
     int arr[] = {1,2,4,593,29,19,0};
     int arr_len = sizeof(arr) / sizeof(arr[0]);
