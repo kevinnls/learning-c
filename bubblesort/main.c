@@ -3,6 +3,7 @@
 #include<string.h>
 
 int* sort(int*, int);
+void swap(int*, int, int);
 int DEBUG;
 
 int main(){
@@ -30,5 +31,27 @@ int* sort(int* arr, int length){
 	}
     }
 
+    for(int i=1; i<length; i++){
+	if(arr[i]>arr[i+1])
+	    swap(arr, i, i+1);
+    }
+
+    if(DEBUG){
+	printf("=====\nelement post-sort are: ");
+	for(int i=0; i<length; i++){
+	    if(i!=0) printf(", ");
+	    printf("%d", arr[i]);
+	}
+    }
+
     return arr;
+}
+void swap(int* arr, int left, int right){
+    if(DEBUG)
+	printf("\nPRESWAP\nleft is: %d; right is %d\n", arr[left],arr[right]);
+    int _hold = arr[left];
+    arr[left] = arr[right];
+    arr[right] = _hold;
+    if(DEBUG)
+	printf("\nPOSTSWAP\nleft is: %d; right is %d\n", arr[left],arr[right]);
 }
