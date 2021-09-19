@@ -13,7 +13,7 @@ int main(){
 	DEBUG = !strcmp(_debug,"1");
 	//how does this even work???
 
-    int arr[] = {1,2,3,6,5};
+    int arr[] = {1,2,3,5,4};
     int arr_len = sizeof(arr) / sizeof(arr[0]);
     sort(arr, arr_len);
     printf("\n");
