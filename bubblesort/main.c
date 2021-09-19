@@ -13,7 +13,7 @@ int main(){
 	DEBUG = !strcmp(_debug,"1");
 	//how does this even work???
 
-    int arr[] = {1,2,4,593,29,19,0};
+    int arr[] = {1,2,3,6,5};
     int arr_len = sizeof(arr) / sizeof(arr[0]);
     sort(arr, arr_len);
     printf("\n");
@@ -29,12 +29,20 @@ int* sort(int* arr, int length){
 	    if(i!=0) printf(", ");
 	    printf("%d", arr[i]);
 	}
+	printf("\n");
     }
 
-    for(int i=1; i<length; i++){
-	if(arr[i]>arr[i+1])
-	    swap(arr, i, i+1);
-    }
+    int changes = 0;
+    do {
+	changes = 0;
+	for(int i=1; i<length; i++){
+	    if(arr[i]>arr[i+1]){
+		if(DEBUG)printf("need to swap [%d]->%d and [%d]->%d\n",i,arr[i],i+1,arr[i+1]);
+		swap(arr, i, i+1);
+		++changes;
+	    }
+	}
+    } while (changes != 0);
 
     if(DEBUG){
 	printf("=====\nelement post-sort are: ");
@@ -48,10 +56,10 @@ int* sort(int* arr, int length){
 }
 void swap(int* arr, int left, int right){
     if(DEBUG)
-	printf("\nPRESWAP\nleft is: %d; right is %d\n", arr[left],arr[right]);
+	printf("PRESWAP left[%d] is: %d; right[%d] is %d\n", left,arr[left],right,arr[right]);
     int _hold = arr[left];
     arr[left] = arr[right];
     arr[right] = _hold;
     if(DEBUG)
-	printf("\nPOSTSWAP\nleft is: %d; right is %d\n", arr[left],arr[right]);
+	printf("POSTSWAP left[%d] is: %d; right[%d] is %d\n", left,arr[left],right,arr[right]);
 }
