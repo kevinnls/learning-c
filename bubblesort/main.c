@@ -16,6 +16,11 @@ int main(){
     int arr[] = {1,2,3,5,4};
     int arr_len = sizeof(arr) / sizeof(arr[0]);
     sort(arr, arr_len);
+    printf("sorted array: ");
+    for(int i=0; i<arr_len; i++){
+	if(i!=0) printf(", ");
+	printf("%d", arr[i]);
+    }
     printf("\n");
     return EXIT_SUCCESS;
 }
