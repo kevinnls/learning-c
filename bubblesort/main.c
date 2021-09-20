@@ -35,7 +35,7 @@ int* sort(int* arr, int length){
     int changes = 0;
     do {
 	changes = 0;
-	for(int i=1; i<length; i++){
+	for(int i=0; i<length-1; i++){
 	    if(arr[i]>arr[i+1]){
 		if(DEBUG)printf("need to swap [%d]->%d and [%d]->%d\n",i,arr[i],i+1,arr[i+1]);
 		swap(arr, i, i+1);
