@@ -2,10 +2,11 @@
 #include<stdlib.h>
 #include<stdarg.h>
 
-void debug_msg(char* message, ... ){
+void dprintf(char* fmt, ... ){
     va_list args;
-    va_start(args, message);
+    va_start(args, fmt);
     fprintf(stderr, "DEBUG: ");
-    vfprintf(stderr, message, args);
+    vfprintf(stderr, fmt, args);
+    frpintf(stderr, "\n");
     va_end(args);
 }
