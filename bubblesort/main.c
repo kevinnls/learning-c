@@ -4,16 +4,22 @@
 
 int* sort(int*, int);
 void swap(int*, int, int);
+void integeriseArgs(int, char**, int*);
 int DEBUG;
 
-int main(){
+int main(int argc, char** argv){
+
+    int arr[argc-1];
+
+    integeriseArgs(argc, argv, arr);
+
 
     char* _debug = getenv("DEBUG");
     if(_debug)
 	DEBUG = !strcmp(_debug,"1");
 	//how does this even work???
 
-    int arr[] = {1,2,3,5,4};
+    //int arr[] = {1,2,3,5,4};
     int arr_len = sizeof(arr) / sizeof(arr[0]);
     sort(arr, arr_len);
     printf("sorted array: ");
@@ -67,4 +73,10 @@ void swap(int* arr, int left, int right){
     arr[right] = _hold;
     if(DEBUG)
 	printf("POSTSWAP left[%d] is: %d; right[%d] is %d\n", left,arr[left],right,arr[right]);
+}
+
+void integeriseArgs(int len, char** args, int* arr_ptr){
+    for(int i=1; i<len ; i++){
+	arr_ptr[i-1] = atoi(args[i]);
+    }
 }
